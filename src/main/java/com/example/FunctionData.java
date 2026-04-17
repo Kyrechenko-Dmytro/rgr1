@@ -1,74 +1,42 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * Клас-контейнер для зберігання результатів обчислення функції та її похідної
- * на заданому відрізку з певним кроком.
+ * Незмінний контейнер результатів обчислення функції та її похідної.
  *
- * Зберігає масиви значень x, f(x) та f'(x) у вигляді ArrayList.
+ * Публічний API повертає List (а не конкретний ArrayList) — це дозволяє
+ * змінити внутрішню реалізацію без зміни клієнтського коду (DIP).
+ * Списки повертаються через Collections.unmodifiableList, щоб запобігти
+ * зовнішній модифікації стану об'єкта.
  */
 public class FunctionData {
 
-    /** Назва функції */
     private final String functionName;
+    private final List<Double> xValues;
+    private final List<Double> fValues;
+    private final List<Double> dfValues;
 
-    /** Список значень аргументу x */
-    private final ArrayList<Double> xValues;
-
-    /** Список значень функції f(x) */
-    private final ArrayList<Double> fValues;
-
-    /** Список значень похідної f'(x) */
-    private final ArrayList<Double> dfValues;
-
-    /**
-     * Конструктор: ініціалізує порожні списки.
-     *
-     * @param functionName назва функції
-     */
     public FunctionData(String functionName) {
         this.functionName = functionName;
-        this.xValues = new ArrayList<>();
-        this.fValues = new ArrayList<>();
+        this.xValues  = new ArrayList<>();
+        this.fValues  = new ArrayList<>();
         this.dfValues = new ArrayList<>();
     }
 
-    /**
-     * Додає нову точку з відповідними значеннями.
-     *
-     * @param x   значення аргументу
-     * @param fx  значення функції
-     * @param dfx значення похідної
-     */
     public void addRow(double x, double fx, double dfx) {
         xValues.add(x);
         fValues.add(fx);
         dfValues.add(dfx);
     }
 
-    /** @return список значень x */
-    public ArrayList<Double> getXValues() {
-        return xValues;
-    }
+    public List<Double> getXValues()  { return Collections.unmodifiableList(xValues);  }
+    public List<Double> getFValues()  { return Collections.unmodifiableList(fValues);  }
+    public List<Double> getDfValues() { return Collections.unmodifiableList(dfValues); }
 
-    /** @return список значень f(x) */
-    public ArrayList<Double> getFValues() {
-        return fValues;
-    }
+    public int size() { return xValues.size(); }
 
-    /** @return список значень f'(x) */
-    public ArrayList<Double> getDfValues() {
-        return dfValues;
-    }
-
-    /** @return кількість точок */
-    public int size() {
-        return xValues.size();
-    }
-
-    /** @return назва функції */
-    public String getFunctionName() {
-        return functionName;
-    }
+    public String getFunctionName() { return functionName; }
 }
