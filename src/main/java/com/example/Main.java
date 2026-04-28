@@ -12,9 +12,9 @@ public class Main {
         parameters.setDifferentiationType(DifferentiationType.NUMERICAL);
         parameters.setExpression("exp(-x^2)*sin(x)");
         parameters.setA(1.0);
-        parameters.setXStart(0.0);
-        parameters.setXEnd(5.0);
-        parameters.setStep(0.1);
+        parameters.setXStart(1.5);
+        parameters.setXEnd(6.5);
+        parameters.setStep(0.05);
         parameters.setCsvFilePath("data.csv");
 
         Function function = FunctionFactory.create(parameters);

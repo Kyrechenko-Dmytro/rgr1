@@ -1,5 +1,11 @@
 package com.example;
 
+/* 
+    Start programm:
+
+    mvn javafx:run   
+*/
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,9 +32,9 @@ public class PlotApp extends Application {
     private final TextField expressionField = new TextField("exp(-x^2)*sin(x)");
     private final TextField parameterAField = new TextField("1.0");
     private final TextField csvField = new TextField("data.csv");
-    private final TextField startField = new TextField("-5.0");
-    private final TextField endField = new TextField("5.0");
-    private final TextField stepField = new TextField("0.1");
+    private final TextField startField = new TextField("1.5");
+    private final TextField endField = new TextField("6.5");
+    private final TextField stepField = new TextField("0.05");
 
     private final NumberAxis xAxis = new NumberAxis();
     private final NumberAxis yAxis = new NumberAxis();

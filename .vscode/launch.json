@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "type": "java",
+      "name": "Run PlotApp",
+      "request": "launch",
+      "mainClass": "com.example.PlotApp",
+      "vmArgs": "--module-path \"D:/javafx/lib\" --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Run Main",
+      "request": "launch",
+      "mainClass": "com.example.Main"
+    }
+  ]
+}
